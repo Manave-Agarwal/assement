@@ -1,0 +1,345 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101426">
+    <title>LuckyDraw - Play. Draw. Celebrate.</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="script.js">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- HEADER -->
+    <header class="topbar">
+        <div class="brand">
+            <div class="logo">✦</div>
+            LuckyDraw<span>.</span>
+        </div>
+
+        <nav class="nav">
+            <button class="active" data-page="home">Home</button>
+            <button data-page="history">Draw History</button>
+            <button data-page="profile">My Profile</button>
+        </nav>
+
+        <div class="user-chip">
+            <div class="avatar" id="headerAvatar">G</div>
+            <div>
+                <strong id="headerName">Guest Player</strong>
+                <small>Demo account</small>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- HOME PAGE -->
+        <section class="page active" id="home">
+
+            <div class="hero">
+                <div class="hero-copy">
+                    <div class="eyebrow">
+                        <span class="dot"></span>
+                        VIRTUAL COINS · DEMO GAME
+                    </div>
+
+                    <h1>
+                        One draw.<br>
+                        <span>One lucky winner.</span>
+                    </h1>
+
+                    <p>
+                        Join a friendly virtual lucky draw, watch the
+                        player pool fill up, and see who takes the demo
+                        prize. No real money, no payments — just a
+                        college project experience.
+                    </p>
+
+                    <div class="actions">
+                        <button class="btn primary" id="joinBtn">
+                            ＋ Join draw · 10 credits
+                        </button>
+
+                        <button class="btn secondary" id="howBtn">
+                            How it works ↗
+                        </button>
+                    </div>
+                </div>
+
+                <div class="hero-art">
+                    <span class="spark s1">✦</span>
+                    <span class="spark s2">✧</span>
+                    <span class="spark s3">✦</span>
+                    <span class="spark s4">✧</span>
+
+                    <div class="orb">🎁</div>
+
+                    <div class="float-tag tag-left">
+                        🏆 40 credits prize
+                    </div>
+
+                    <div class="float-tag tag-right">
+                        ✨ Your chance awaits
+                    </div>
+                </div>
+            </div>
+
+            <!-- STATISTICS -->
+            <div class="stats">
+
+                <div class="stat">
+                    <span class="stat-icon">🪙</span>
+                    <div class="stat-label">Your demo balance</div>
+                    <div class="stat-value" id="balanceStat">100</div>
+                </div>
+
+                <div class="stat">
+                    <span class="stat-icon">👥</span>
+                    <div class="stat-label">Players in this draw</div>
+                    <div class="stat-value" id="playersStat">0/5</div>
+                </div>
+
+                <div class="stat">
+                    <span class="stat-icon">🎁</span>
+                    <div class="stat-label">Winner's prize</div>
+                    <div class="stat-value">
+                        40 <small>credits</small>
+                    </div>
+                </div>
+
+                <div class="stat">
+                    <span class="stat-icon">💜</span>
+                    <div class="stat-label">Your wins</div>
+                    <div class="stat-value" id="winsStat">0</div>
+                </div>
+
+            </div>
+
+            <!-- GAME SECTION -->
+            <div class="section-head">
+                <div>
+                    <h2>Today's Lucky Draw</h2>
+                    <p>Five players make one complete round.</p>
+                </div>
+
+                <span class="eyebrow">
+                    ROUND <b id="roundNumber">01</b>
+                </span>
+            </div>
+
+            <div class="game-grid">
+
+                <!-- PRIZE POOL -->
+                <div class="card">
+
+                    <h3>🎯 Current Prize Pool</h3>
+
+                    <div class="sub">
+                        Virtual credits collected from this round
+                    </div>
+
+                    <div class="pool-amount">
+                        <span id="poolAmount">0</span>
+                        <span>credits</span>
+                    </div>
+
+                    <div class="progress-wrap">
+                        <div class="progress" id="progressBar"></div>
+                    </div>
+
+                    <div class="progress-meta">
+                        <span id="progressText">0 of 5 players joined</span>
+                        <span id="progressPercent">0%</span>
+                    </div>
+
+                    <div class="players" id="playerSlots"></div>
+
+                    <div class="prize-row">
+                        <span>Winner receives</span>
+                        <strong class="green">40 credits</strong>
+                    </div>
+
+                    <div class="prize-row">
+                        <span>Platform demo fee</span>
+                        <strong class="purple">10 credits</strong>
+                    </div>
+
+                    <div class="prize-row">
+                        <span>Entry per player</span>
+                        <strong>10 credits</strong>
+                    </div>
+
+                </div>
+
+                <!-- DRAW CARD -->
+                <div class="card draw-card">
+
+                    <div class="draw-icon" id="drawIcon">🎲</div>
+
+                    <h3 id="drawTitle">
+                        Ready to try your luck?
+                    </h3>
+
+                    <p class="sub" id="drawMessage">
+                        Join the round. The draw becomes available
+                        when all five player spots are filled.
+                    </p>
+
+                    <button class="btn primary" id="drawBtn" disabled>
+                        Draw needs 5 players
+                    </button>
+
+                    <button class="btn secondary" id="demoFillBtn">
+                        ＋ Add 4 demo players
+                    </button>
+
+                    <div class="notice">
+                        Demo only: credits are stored in this browser.
+                        This project does not accept payments or award
+                        real cash prizes.
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- RECENT WINNERS -->
+            <div class="section-head history">
+                <div>
+                    <h2>Recent Winners</h2>
+                    <p>Latest completed rounds on this device.</p>
+                </div>
+
+                <button class="btn secondary" data-goto="history">
+                    View all →
+                </button>
+            </div>
+
+            <div class="history-list" id="recentWinners"></div>
+
+        </section>
+
+        <!-- HISTORY PAGE -->
+        <section class="page" id="history">
+
+            <h1 class="page-title">Draw History</h1>
+
+            <p class="page-desc">
+                A record of completed demo rounds.
+            </p>
+
+            <div class="card">
+                <div class="history-list" id="allHistory"></div>
+            </div>
+
+        </section>
+
+        <!-- PROFILE PAGE -->
+        <section class="page" id="profile">
+
+            <h1 class="page-title">My Profile</h1>
+
+            <p class="page-desc">
+                Your local demo account and virtual credit balance.
+            </p>
+
+            <div class="card profile-card">
+
+                <div class="big-avatar" id="profileAvatar">G</div>
+
+                <div class="profile-info">
+                    <h3>Player Name</h3>
+
+                    <input
+                        id="nameInput"
+                        maxlength="22"
+                        placeholder="Enter your player name"
+                    >
+
+                    <div class="sub">
+                        Name appears in the player list and winner history.
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="stats profile-stats">
+
+                <div class="stat">
+                    <div class="stat-label">Current balance</div>
+                    <div class="stat-value" id="profileBalance">100</div>
+                </div>
+
+                <div class="stat">
+                    <div class="stat-label">Rounds won</div>
+                    <div class="stat-value" id="profileWins">0</div>
+                </div>
+
+            </div>
+
+            <div class="card reset-card">
+                <h3>Demo Controls</h3>
+
+                <p class="sub">
+                    Reset your local project data to its original state.
+                    This only affects this browser.
+                </p>
+
+                <button class="btn secondary" id="resetBtn">
+                    ↻ Reset Demo Data
+                </button>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- MOBILE NAVIGATION -->
+    <nav class="mobile-nav">
+        <button class="active" data-page="home">⌂ Home</button>
+        <button data-page="history">🏆 History</button>
+        <button data-page="profile">☺ Profile</button>
+    </nav>
+
+    <footer class="footer">
+        <strong>LuckyDraw.</strong>
+        College project prototype · Virtual credits only
+        <br>
+        Not a real-money gaming, lottery, payment, or prize distribution service.
+    </footer>
+
+</div>
+
+<!-- TOAST MESSAGE -->
+<div class="toast" id="toast"></div>
+
+<!-- WINNER POPUP -->
+<div class="modal-backdrop" id="winnerModal">
+
+    <div class="modal">
+
+        <div class="winner-cup">🏆</div>
+
+        <div class="eyebrow">ROUND COMPLETE</div>
+
+        <h2 id="modalWinner">We have a winner!</h2>
+
+        <p id="modalText">
+            The lucky player has won the demo prize.
+        </p>
+
+        <button class="btn primary" id="newRoundBtn">
+            Start Next Round
+        </button>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
